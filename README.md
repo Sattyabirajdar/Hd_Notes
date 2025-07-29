@@ -95,10 +95,10 @@
 ### 🔧 Backend Environment Variables (`/backend/.env`)
 
 ```env
-MONGO_URI=your_mongodb_connection_string
-PORT=5000
-CLIENT_URL=http://localhost:3000
+MONGO_URL=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+EMAIL_USER=your_email_to_send_otp
+EMAIL_PASS=your_app_password
 ```
 
 ---
@@ -132,12 +132,12 @@ JWT_SECRET=your_jwt_secret
    npm install --save-dev concurrently
    ```
 
-   Add to your root `package.json`:
+   Root `package.json`:
 
    ```json
    "scripts": {
-     "client": "cd frontend && npm start",
-     "server": "cd backend && nodemon app.js",
+     "client": "cd frontend && npm run dev",
+     "server": "cd backend && node app.js",
      "dev": "concurrently \"npm run server\" \"npm run client\""
    }
    ```
