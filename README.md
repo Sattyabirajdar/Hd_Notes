@@ -1,62 +1,183 @@
-# Hd_Notes 
-*A high-definition note‑taking web app built with the MERN stack*
+# 📓 HD Notes
 
---
-
-## Project Preview  
-<!-- Add your app screenshots or GIFs here -->
-![Homepage – HD Notes](LINK_TO_IMAGE)  
-*(Replace `LINK_TO_IMAGE` with your image path or URL)*
-
---
-
-## Table of Contents  
-- [About The Project](#about-the-project)  
-- [Demo](#demo) *(optional)*  
-- [Tech Stack](#tech-stack)  
-- [Architecture](#architecture)  
-- [Features](#features)  
-- [Getting Started](#getting-started)  
-  - [Prerequisites](#prerequisites)  
-  - [Install & Run Locally](#install--run-locally)  
-  - [Environment Variables](#environment-variables)  
-- [Usage](#usage)  
-- [Future Work](#future-work)  
-- [Contributing](#contributing)  
-- [License](#license)  
+> A high-definition note‑taking web app built with the **MERN stack**
 
 ---
 
-## About The Project  
-**HD Notes** is a full-stack web application built with MongoDB, Express.js, React, and Node.js. It enables users to create, view, edit, and organize high-definition notes with embedded images support.
+## 🧩 About The Project
+
+**HD Notes** is a full-stack web application built using **MongoDB**, **Express.js**, **React**, and **Node.js**. It enables users to **create**, **view**, **edit**, and **organize** high-definition notes, with support for **embedded images**.
 
 ---
 
-## Demo  
-*(Include a link to a deployed version if available)*  
-Example: [Live Demo here](YOUR_DEPLOYED_URL_HERE)
+## 🌐 Project Preview
+
+> *(Add preview images inside `/frontend/public/assets` and embed them here)*
+
+| Homepage                                   | Signup                                         | Login                                        | Dashboard                                            | Mobile View                                              |
+| ------------------------------------------ | ---------------------------------------------- | -------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------- |
+| ![Home](./frontend/public/assets/home.png) | ![Signup](./frontend/public/assets/signup.png) | ![Login](./frontend/public/assets/login.png) | ![Dashboard](./frontend/public/assets/dashboard.png) | ![Mobile](./frontend/public/assets/mobile-dashboard.png) |
 
 ---
 
-## Tech Stack  
-- **MongoDB** – NoSQL database for storing notes and attachments  
-- **Express.js** – Backend framework for RESTful APIs  
-- **React** – Frontend UI library  
-- **Node.js** – Server runtime environment  
-- **Mongoose** – ODM for MongoDB schemas and queries  
-- **Concurrency** – Concurrently or npm scripts to run client & server together
+## ⚙️ Tech Stack
+
+* **MongoDB** – NoSQL database for storing notes and attachments
+* **Express.js** – Backend framework for RESTful APIs
+* **React** – Frontend UI library
+* **Node.js** – Server runtime environment
+* **Mongoose** – ODM for MongoDB schemas and queries
+* **Concurrently** – Run frontend and backend together in dev mode
 
 ---
 
-## Architecture  
-- **Backend (server/)**  
-  - Express app exposing REST endpoints (e.g. `GET /notes`, `POST /notes`, etc.)  
-  - MongoDB models defined with Mongoose  
-  - Middleware for validation, CORS, error handling  
+## 🏗️ Architecture
 
-- **Frontend (client/)**  
-  - React app (created via CRA or Vite)  
-  - Components for listing notes, editing, searching  
-  - Image upload and embedding  
+### 🔹 Backend (`/backend`)
 
-- **Folder Structure**  
+* Express app exposing REST endpoints (`GET /notes`, `POST /notes`, etc.)
+* Mongoose models for MongoDB
+* Middleware for validation, CORS, and error handling
+
+### 🔹 Frontend (`/frontend`)
+
+* React SPA (built using CRA or Vite)
+* Components for:
+
+  * Listing notes
+  * Editing/creating notes
+  * Searching with tags
+  * Uploading images
+
+---
+
+## 📁 Folder Structure
+
+```
+/backend
+├── models/
+├── routes/
+├── controllers/
+└── app.js
+
+/frontend
+├── src/
+│   ├── components/
+│   ├── pages/
+│   └── App.js
+└── public/
+    └── assets/
+```
+
+---
+
+## ✨ Features
+
+* ✅ Create, update, and delete notes
+* 🔍 Client-side search and tag filtering
+* 🗓️ NoSQL storage using MongoDB
+* 📡 RESTful API architecture
+* 🖼️ Image upload and preview
+* 📱 Responsive design (desktop + mobile)
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+* Node.js (v16+)
+* npm or Yarn
+* MongoDB (Atlas or local)
+
+---
+
+### 🔧 Backend Environment Variables (`/backend/.env`)
+
+```env
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+CLIENT_URL=http://localhost:3000
+JWT_SECRET=your_jwt_secret
+```
+
+---
+
+### 🛠️ Setup Instructions
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/Sattyabirajdar/Hd_Notes.git
+   cd Hd_Notes
+   ```
+
+2. **Install backend dependencies**:
+
+   ```bash
+   cd backend
+   npm install
+   ```
+
+3. **Install frontend dependencies**:
+
+   ```bash
+   cd ../frontend
+   npm install
+   ```
+
+4. **Run both servers concurrently** (from project root):
+
+   ```bash
+   npm install --save-dev concurrently
+   ```
+
+   Add to your root `package.json`:
+
+   ```json
+   "scripts": {
+     "client": "cd frontend && npm start",
+     "server": "cd backend && nodemon app.js",
+     "dev": "concurrently \"npm run server\" \"npm run client\""
+   }
+   ```
+
+5. **Start development mode**:
+
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🖼️ How to Add Preview Images
+
+* Save screenshots in `/frontend/public/assets/`
+* Reference them in Markdown like:
+
+  ```markdown
+  ![Alt text](./frontend/public/assets/image-name.png)
+  ```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit a PR 🙌
+
+---
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for details.
+
+---
+
+## 📬 Contact
+
+**Sattyabirajdar**
+[GitHub Profile →](https://github.com/Sattyabirajdar)
+
+---
+
+> *Made with ❤️ using the MERN stack.*
