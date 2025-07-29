@@ -152,11 +152,11 @@ EMAIL_PASS=your_app_password
 
 ## 🖼️ How to Add Preview Images
 
-* Save screenshots in `/frontend/public/assets/`
+* Save screenshots in `/screenShots`
 * Reference them in Markdown like:
 
   ```markdown
-  ![Alt text](./frontend/public/assets/image-name.png)
+  ![Alt text](./screenShots/image-name.png)
   ```
 
 ---
