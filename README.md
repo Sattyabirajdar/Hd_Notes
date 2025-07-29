@@ -12,11 +12,11 @@
 
 ## 🌐 Project Preview
 
-> *(Add preview images inside `/frontend/public/assets` and embed them here)*
+> *(Add preview images inside `./screenShots` and embed them here)*
 
 | Homepage                                   | Signup                                         | Login                                        | Dashboard                                            | Mobile View                                              |
 | ------------------------------------------ | ---------------------------------------------- | -------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------- |
-| ![Home](./frontend/public/assets/home.png) | ![Signup](./frontend/public/assets/signup.png) | ![Login](./frontend/public/assets/login.png) | ![Dashboard](./frontend/public/assets/dashboard.png) | ![Mobile](./frontend/public/assets/mobile-dashboard.png) |
+| ![Home](./screenShots/homepage.png) | ![Signup](./screenShots/signup.png) | ![Login](./screenShots/login.png) | ![Dashboard](./screenShots/dashboard.png) | ![Signup-Mobile](./screenShots/signupMobile.png)
 
 ---
 
