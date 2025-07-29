@@ -161,18 +161,6 @@ JWT_SECRET=your_jwt_secret
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to open issues or submit a PR 🙌
-
----
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for details.
-
----
-
 ## 📬 Contact
 
 **Sattyabirajdar**
