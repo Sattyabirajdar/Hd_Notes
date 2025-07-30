@@ -16,20 +16,33 @@ function Signup() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (dob) {
+      setShowError(false);
+    }
+  }, [dob]);
+
+  useEffect(() => {
     const form = document.querySelector(".needs-validation");
     if (!form) return;
 
     const submitHandler = (event) => {
-      if (!form.checkValidity()) {
+      const formValid = form.checkValidity();
+
+      if (!dob) {
+        setShowError(true);
+      }
+
+      if (!formValid || !dob) {
         event.preventDefault();
         event.stopPropagation();
       }
+
       form.classList.add("was-validated");
     };
 
     form.addEventListener("submit", submitHandler);
     return () => form.removeEventListener("submit", submitHandler);
-  }, []);
+  }, [dob]); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +51,6 @@ function Signup() {
       setShowError(true);
       return;
     }
-    setShowError(false);
 
     const data = {
       name,
@@ -91,6 +103,16 @@ function Signup() {
     }
   };
 
+  const handleDobChange = (date) => {
+    setDob(date);
+    if (date) {
+      setShowError(false);
+    }
+    else{
+      setShowError(true);
+    }
+  };
+
   return (
     <>
       <div className="container py-5 mt-3">
@@ -109,20 +131,14 @@ function Signup() {
               margin: "2%",
             }}
           >
-            {/* Left section with form */}
             <div
               className="col-md-5 d-flex flex-column"
-              style={{
-                padding: "20px",
-              }}
+              style={{ padding: "20px" }}
             >
               <div className="row">
-                {/* Logo */}
                 <div
                   className="col-12 logo-container"
-                  style={{
-                    height: "50px",
-                  }}
+                  style={{ height: "50px" }}
                 >
                   <img
                     src="/assets/logo.svg"
@@ -130,8 +146,6 @@ function Signup() {
                     style={{ height: "1.2rem" }}
                   />
                 </div>
-                {/* Form */}
-
                 <div className="wrapper-div">
                   <div
                     className="col-12 align-items-center justify-content-start"
@@ -204,11 +218,15 @@ function Signup() {
                             />
                             <DatePicker
                               selected={dob}
-                              onChange={(date) => setDob(date)}
+                              onChange={handleDobChange}
+                              onBlur={() => {
+                                if (!dob) setShowError(true);
+                              }}
                               name="dob"
                               id="dob"
                               dateFormat="dd MMMM yyyy"
                               maxDate={new Date()}
+                              isClearable
                               showMonthDropdown
                               scrollableMonthDropdown
                               showYearDropdown
@@ -224,7 +242,7 @@ function Signup() {
                             style={{
                               fontSize: "smaller",
                               textAlign: "left",
-                              color: "red",
+                              color: "#dc3545",
                             }}
                           >
                             Dob is required
@@ -253,6 +271,7 @@ function Signup() {
                           Email is required
                         </div>
                       </div>
+
                       {!loading ? (
                         <button type="submit" className="btn btn-primary w-100">
                           Get OTP
@@ -280,7 +299,6 @@ function Signup() {
                               Otp is required
                             </div>
                           </div>
-
                           <button
                             type="submit"
                             className="btn btn-primary w-100"
@@ -304,7 +322,6 @@ function Signup() {
               </div>
             </div>
 
-            {/* Right section with image (hidden on small screens) */}
             <div
               className="col-md-7 d-none d-md-block"
               style={{
