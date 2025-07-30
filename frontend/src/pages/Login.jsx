@@ -29,7 +29,7 @@ function Login() {
 
   const handleSendOtp = async (e) => {
     e.preventDefault();
-    if (!email) return;
+   if (!email) return toast.error("Email is required");
 
     try {
       const res = await fetch("http://localhost:3000/api/auth/getotp", {
