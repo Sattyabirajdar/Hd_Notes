@@ -56,7 +56,6 @@ module.exports.getotp = async(req, res) => {
 
 module.exports.signup = async(req, res) => {
     const { email, name, dob, otp } = req.body;
-
     if (!email || !name || !dob || !otp) {
         return res.status(400).json({ message: "All fields are required" });
     }
@@ -67,13 +66,23 @@ module.exports.signup = async(req, res) => {
     }
 
     try {
-        const newUser = new User({ email, name, dob });
-        await newUser.save();
-
+        const savedUser = await new User({ email, name, dob }).save();
         otpStore.delete(email);
-        res.json({ message: "User registered successfully" });
-    } catch (err) {
-        console.error("Signup error:", err);
+
+        const token = jwt.sign({ userId: { id: savedUser._id, email: savedUser.email } },
+            process.env.JWT_SECRET, { expiresIn: "1d" }
+        );
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "Strict",
+            maxAge: 24 * 60 * 60 * 1000,
+        });
+
+        return res.json({ message: "User registered successfully" });
+    } catch (error) {
+        console.error("Signup error:", error);
         return res.status(500).json({ message: "Signup failed" });
     }
 };
